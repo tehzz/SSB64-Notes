@@ -1,4 +1,4 @@
-# 80004950 - ssbResetMainHeap
+# 80006D54 - ssbResetHeap
 * RAM Routine Location : `0x80006D54`
 
 Resets the "heap structure" pointed to in a0
