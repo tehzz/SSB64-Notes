@@ -1,0 +1,30 @@
+Char LUT
+RAM	0x80116E10 
+ROM	0x92610
+
+pointers to active RAM structures
+
+Struct
+
+0x0
+-
+0x18	u32 file number
+
+
+0x18
+-
+0x40	pointer to pointer to file
+	except for the fifth word, 
+	which looks like it points directly to the file...?
+		(address in dynamically allocated RAM region)
+
+Files obviously can include other files via reqs, etc.
+
+Anyways, for mario (0x00)
+
+LUT points to 0x80117810, which seems to be at 0x93010 uncompressed in ROM
+So, substract (8)0084800 from the RAM pointers in the Char LUT to find ROM offsets 
+for the character structs
+
+Structs are pretty big, so there's probably important data in the structure itself, 
+in addition to whatever is in the included files

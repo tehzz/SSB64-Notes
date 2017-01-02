@@ -1,0 +1,12 @@
+Stock Icons Notes
+
+80130E30   -> Pointer to Loaded File(s) from file 1
+        -> at 0x348 of this file, pointer to stock image
+          -> Pointer at 0x768 to 0x348 (does this go to image?)
+
+Icon/Background seem to be stored as 2D image with typical SSB structure
+In an included/req'ed file
+
+Also it includes different pallets for character colors/costumes.
+
+Are these the only things in the file...?

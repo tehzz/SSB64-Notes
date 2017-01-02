@@ -1,0 +1,25 @@
+--Generic------
+stun  000200A4
+sleep 000200A5
+
+taunt 000200BD
+
+entrance 000200DD
+-> Different for each character...
+MM D-B Ground 000200E3
+
+Spin? 00020037
+
+--Master Hand-----
+MH Start at 000200DF
+
+000200E1 is ignition
+000200E2 igni + fly
+000200E3 land
+
+000200E5 two finger walk
+000200E9 smoking fist
+000200EF full finger twirl
+
+000200F9 sparkling
+000200FA exploding

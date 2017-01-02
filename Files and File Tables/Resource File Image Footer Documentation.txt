@@ -1,0 +1,52 @@
+2D Image Footer Data Structure
+
+struct Img{
+	{
+		0x0		2 bytes	- Final Data Width		- 
+		0x2		2 bytes	- Padded Data Width
+		0x4		4 bytes - Unknown (always 0?)
+		0x8		2 bytes - Offset to next Node (in words)
+		0xA		2 bytes - Offset to Data (in words)
+		0xC		2 bytes - Number of Rows (Data Height)
+		0xE		2 bytes - Always 0
+	}	while(Final Data Width + 0x10 != 0)
+	then
+		0x10	4 bytes - Always 0 if moving on from sectionalized image/data list
+		0x14	2 bytes - Image Overall Width (Should be the same as all "0x0s"/"Final Data Width")
+		0x16	2 bytes - Image Overall Height (not necessarily the sum of all "0xCs"/"Number of Rows")
+		0x18	float	- Image x Scale?
+		0x1C	float	- Image y Scale?
+		
+		0x20	4 bytes - Always 0
+		0x24	2 bytes	- Unknown (image type flags? 0x0240 for 4bit-CI) (something with coloring things byte 1 unknown. byte 2 b0010 will color)
+		0x26	2 bytes	- Unknown (always seems to be 0x1234)
+		0x28	4 bytes - Unkwown (Always 0xFFFFFFFF) (if 0x24 is 0x0201, then this is colorize RGBA, though A doesn't seem to do much)
+		0x2C	4 bytes - if = 0x0000100 Next is Pallet/ CI Image...?
+		0x30	4 bytes	- Next Node / Offset to pallet (if there)
+		0x34	4 bytes - Unknown
+		0x38 	2 bytes - Number of Image Pieces [# of 0x10 long beginning structure(s)]
+		0x3A	2 bytes	- Unknown (Seems to be 0x18 + 0xC * Number of Chunks)
+		0x3C	2 bytes	- Data Height to Replace 0x3E
+		0x3E	2 bytes	- Value of data height to be replaced by 0x3C
+		0x40	4 bytes	- Image Format (see below)
+		0x44	4 bytes - Next Node/Offset to beginning of this structure
+}  
+
+
+0x24 2 Bytes 	Has to do with color blending, I guess. The first byte always seems to be 0x2 b0010
+				The second byte is normally 0x4 b0100, but can be set to 0x2 to allow for 0x28 to set the color (32bit RGBA value)
+				One of the bits might be for the blending mode...?
+		
+0x40 2 Bytes
+
+		4 bit	|	8 bit	|	16 bit	|	32 bit
+Int		0400	|	0401?	|	x		|	x
+IA		0300	|	0301	|	0302	|	x
+CI		0200	|	0201	|	x		|	x	
+RGBA	x		|	x		|	0002	|	0003
+
+0404 = 4 bit I with no word swap!!~!??
+
+is b3 for swapping b0100 = no swap b0000 = swap?
+		
+		

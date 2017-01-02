@@ -1,0 +1,58 @@
+Resource 0256 exploration
+Kirby Beta 1 Stage
+--------------------------
+
+From Filetable:
+	File Node Offset:		0x98
+	Req First Node Offset:	0x14
+	
+File Nodes:
+	0x0098		0xFFFF0000
+		Next:	null
+		Data:	0x00000000
+	
+Req Files:
+	6 Total
+	1	0x0065	0101.bin
+	2	0x0065	0101.bin
+	3	0x0065	0101.bin
+	4	0x0065	0101.bin
+	5	0x0065	0101.bin
+	6	0x0058	0088.bin	Dreamland Background Image
+
+Req Nodes:
+	0x0014		0x0006021C
+		Next:	0x18
+		Data:	0x0870
+		File:	101.bin
+	
+	0x0018		0x0009026C
+		Next:	0x24
+		Data:	0x09B0
+		File:	101.bin
+	
+	0x0024		0x00110496
+		Next:	0x44
+		Data:	0x1258
+		File:	101.bin
+	
+	0x0044		0x00150644
+		Next:	0x54
+		Data:	0x1910
+		File:	101.bin
+		
+	0x0054		0x001704DD
+		Next:	0x5C
+		Data:	0x1374
+		File:	101.bin
+	
+	0x005C		0xFFFF9B22
+		Next:	null
+		Data:	0x26C88
+		File:	88.bin	-> data = Offset to typical footer drawing offset
+									(starting after image chunk offsets)
+
+-----------------------------
+Resource 101.bin
+	First Req from 256.bin 
+	0x0870

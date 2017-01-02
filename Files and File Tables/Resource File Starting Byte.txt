@@ -1,0 +1,8 @@
+Resource File Starting Bytes
+-----------------------------------
+0x00	-	CI image?? Random weird things?
+
+0xB8	-	???
+
+0xDF	-	Image Resource File, or just an image...? except for last one (or is it CI is 0x00?)
+			in f3dex2 0xDF = termination byte....

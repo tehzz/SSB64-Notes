@@ -1,0 +1,407 @@
+|-----------------------------------------------------------------------------------------			
+|			
+|			Stage Select Screen Documentation
+|
+|-----------------------------------------------------------------------------------------
+
+*************************************************
+i	- Stage Indices / Files / Common Stage Names
+*************************************************
+Col 1 is the index; Col 2 is the file (in hex, so 0x100 is resource-0256)/stage preview value
+Note that both values in col 2 are usually expressed in words (so, PC is 00000103 00000014)
+
+0x00	[0x103	0x14]	Peach's Castle
+0x01	[0x106	0x14]	Sector Z
+0x02	[0x105	0x14]	Congo Jungle
+0x03	[0x101	0x14]	Planet Zebes
+0x04	[0x109	0x14]	Hyrule Castle
+0x05	[0x107	0x14]	Yoshi's Island
+0x06	[0x0FF	0x14]	Dreamland
+0x07	[0x108	0x14]	Saffron City
+0x08	[0x104	0x14]	Mushroom Kingdom
+0x09	[0x100	0x14]	Beta 1
+0x0A	[0x102	0x14]	Beta 2
+0x0B	[0x10B	0x00]	"How to Play" Stage
+0x0C	[0x10E	0x14]	Yoshi's Island (No Clouds/1P version)
+0x0D	[0x10D	0x14]	Metal Cavern
+0x0E	[0x10C	0x14]	Battlefield
+0x0F	[0x127	0x00]	Race to the Finish
+0x10	[0x10A	0x00]	Final Destination
+
+0x11	[0x10F	0x00]	Mario Targets
+0x12	[0x110	0x00]	Fox Targets
+0x13	[0x111	0x00]	DK Targets
+0x14	[0x112	0x00]	Samus Targets
+0x15	[0x113	0x00]	Luigi Targets
+0x16	[0x114	0x00]	Link Targets
+0x17	[0x115	0x00]	Yoshi Targets
+0x18	[0x116	0x00]	C. Falcon Targets
+0x19	[0x117	0x00]	Kirby Targets
+0x1A	[0x118	0x00]	Pikachu Targets
+0x1B	[0x119	0x00]	Jigglypuff Targets
+0x1C	[0x11A	0x00]	Ness Targets
+
+0x1D	[0x11B	0x00]	Mario Platforms
+0x1E	[0x11C	0x00]	Fox Platforms
+0x1F	[0x11D	0x00]	DK Platforms
+0x20	[0x11E	0x00]	Samus Platforms
+0x21	[0x11F	0x00]	Luigi Platforms
+0x22	[0x120	0x00]	Link Platforms
+0x23	[0x121	0x00]	Yoshi Platforms
+0x24	[0x122	0x00]	C. Falcon Platforms
+0x25	[0x123	0x00]	Kirby Platforms
+0x26	[0x124	0x00]	Pikachu Platforms
+0x27	[0x125	0x00]	Jigglypuff Platforms
+0x28	[0x126	0x00]	Ness Platforms
+
+*********************************
+ii	-	Stage "Main" File Table
+*********************************
+	Location in RAM: 	0x8012C520
+	Location in ROM:	0xA7D20
+		File:
+		Offset:
+	
+	This are the "files" in the resource file table for each stage in order of stage index. 
+	In pairs of two words, so both the main file (word 1) and 0x00 or 0x14 (word 2) are 
+	important. These same 2-word values are used for previews.
+***********
+iii	- misc
+***********
+	Background: 0x8015B8E0
+	8015B4A0 + 440
+	
+	0x80134E10
+	List of base pointers for file locations in Memory
+	4E10		801574E0	Series Logo Base						[resource-0020.bin]
+	4E14		8015B4A0	Background Texture						[resource-0021.bin]
+	4E18		8015B930	Stage Icon Base / Stage Name Base / 	[resource-0030.bin]
+	4E1C		801697B0
+	4E20		8016A7D0
+	4E24		8018AF30	Stage Preview Something (odd stages...?)
+	4E28		801C5720	Stage Preview Something (even stages...?)
+	4E2C		00000000
+	
+	*****************************
+	Resource Files Loaded on SSS
+	*****************************
+	RAM:	0x801344D0
+	ROM:	0x150040
+	
+	RAM			ROM			Value		File			Description
+	801344D0	150040		0x0014		Resource 0020	Series Logos
+	801344D4	150044		0x0015		Resource 0021	Background Texture
+	801344D8	150048		0x001E		Resource 0030	Stage Icons/Name/SSS Textures
+	801344DC	15004C		0x0021		Resource 0033	Eng Character Set (For NTSC-J?)
+	801344E0	150050		0x001A		Resource 0026	Black/Red Training Mode BG
+	
+	Description:
+		These are the 5 files loaded onto the SSS. I think the "5 files" is hard coded.
+		Check the routine....
+	
+
+	Co-processor Register Info:
+	https://dragonminded.com/n64dev/Reality%20Coprocessor.pdf
+	
+------------------------------------------------------------------------------------------	
+*****************
+01 	- Stage List
+*****************
+Location in ROM:		0x001501B4
+ROM File:
+	Offset:
+	
+Location in RAM:		0x80134644
+Type: Word
+
+Data:	80134644	1501B4		0x00000000
+		80134648	1501B8		0x00000002
+						BC		0x00000004
+						C0		0x00000003
+						C4		0x00000008
+						C8		0x00000005
+						CC		0x00000006
+						D0		0x00000001
+						D4		0x00000007
+		80134668		D8		0x000000DE			
+
+Description:
+	This list controls the order of the stages on the SSS. By changing the final byte
+	(+0x3), you can shift the stages around; however, only 0x00 through 0x08 are legal.
+	This is because these values are used for offset all other lists in the documentation.
+	Also, random (0xDE) is pretty much hard coded into the 10th spot, so don't try to
+	move that around
+	
+	Jorgasms took advantage of the fact that the list is set-up as words, but you only
+	need one byte. He packed in the value of an illegal (>0x08) stage into the word (at +0), while
+	changing the code that depends on the offset to LBU (0x0003) instead of a LW 
+	
+Loading FD:
+
+Loading BtT and BtP stages:
+	
+Links/Smashboards Threads:
+http://smashboards.com/threads/gameshark-vs-mode-final-destination-for-real.373649/
+
+			
+------------------------------------------------------------------------------------------
+02	-	Stage Icons
+	By "icons" I mean the 10 pictures you can move the cursor over on the SSS
+	
+	***************************************
+	Section 02.01 - Stage Icon Offset List
+	***************************************
+	
+	Location in ROM:	0x001501DC
+	ROM File:			
+		Offset:
+	
+	Location in RAM:	0x8013466C
+	Type: Word
+
+	Data:
+		8013466C	1501DC	0x00004D88	0x00
+						E0	0x00005B68	0X01
+						E4	0x00006948	0X02
+						E8	0x00007728	0X03
+						EC	0x00008508	0X04
+						F0	0x000092E8	0X05
+						F4	0x0000BC88	0X06
+						F8	0x0000A0C8	0X07
+						FC	0x0000AEA8	0X08
+		80134690	150200	0x0000CB10	0XDE	RANDOM!
+		
+	Description:
+		Offset used to point to beginning of stage icon texture in memory
+		0x8015B930 + Value = location in memory of texture?
+		Despite Random having the actual offset in this list, when the texture is loaded,
+		a hard code offset in the ASM is used to draw random
+	
+	*********************************
+	2.02 Stage Icons (Actual Images)
+	*********************************
+	
+	Location in ROM:	0x22A9CC
+	ROM File:			resource-0030.bin
+	File Size:			0x811C bytes
+	Compressed? 		Yes
+	Uncompressed Size:	0xDE80	
+	
+	Location in RAM:	0x8015B930	(resource-0030.bin start)
+	
+	Format: 	16-bit RGBA
+	Width:		48 pixels
+	Height:		36 pixels
+	Image Size: 0xD80 bytes
+	Word Flip?	True	
+	
+	Data:
+					[Footer starts at]
+		Offset		Ending		Image
+		0x3FF8		0x4D78		Peach's Castle
+		0x4DD8		0x5B58		Sector Z
+		0x5BB8		0x6938		Congo Jungle
+		0x6998		0x7718		Planet Zebes
+		0x7778		0x84F8		Hyrule Castle
+		0x8558		0x92D8		Yoshi's Island
+		0x9338		0xA0B8		Saffron City
+		0xA118		0xAE98		Mushroom Kingdom
+		0xAEF8		0xBC78		Dreamland
+		
+		0xC778		0xCAE0		Random	(4bit CI)
+								0x368 (872) bytes*2
+									should be 0x360 bytes
+								Pallet at CAE0 to 0xCB00
+									Colors stored in 5551 RGBA
+	***********************
+	2.03 X and Y Locations
+	***********************
+		Seems to be included in the draw function, so no useful memory location
+	
+	***********************
+	2.04 Relevant Routines
+	***********************
+	
+------------------------------------------------------------------------------------------	
+03 - Stage Names
+	**********************************
+	3.01 Stage Name Image Offset List
+	**********************************
+	
+	Location in ROM:	0x0015024C	
+	ROM File:
+	Offset:
+	Location in RAM:	0x801346DC
+	Type:				Word
+	
+	Data
+		RAM			ROM			Value		Stage Index
+		0x801346DC	0x0015024C	0x00001F8	0x00	Peach's Castle
+		0x801346E0	0x00150250	0x0000438	0x01	Sector Z
+		0x801346E4	0x00150254	0x0000678	0x02	Congo Jungle
+		0x801346E8	0x00150258	0x00008B8	0x03	Planet Zebes
+		0x801346EC	0x0015025C	0x0000B10	0x04	Hyrule Castle
+		0x801346F0	0x00150260	0x0000D58	0x05	Yoshi's Island
+		0x801346F4	0x00150264	0x0001418	0x06	Dreamland
+		0x801346F8	0x00150268	0x0000F98	0x07	Saffron City
+		0x801346FC	0x0015026C	0x00011D8	0x08	Mushroom Kingdom
+			
+	Description:
+		These are offsets to the image of the stage name (ie, it's an image
+		of text). Uses the same offset as the stage icons. The image files themselves
+		are in the same file as the stage icons.
+		
+		Note: There is no Random. At 0x80132A28, there is a BEQL that checks against cursor
+		position 0x9 (random). If this branches, it skips over 0x80132A40, which JAL to
+		0x80132738 which "draws" the name
+		
+		0x8015B930 + Value
+	**************************************
+	3.02 Image Data for Stage Name Images
+	**************************************
+	
+	Location in ROM:	0x22A9CC
+	ROM File:			resource-0030.bin
+	File Size:			0x811C bytes
+	Compressed? 		Yes
+	Uncompressed Size:	0xDE80	
+	
+	Format: 	4-bit Intensity
+	Width:		96 pixels
+	Height:		10 pixels
+	Image Size: 0x1E0 bytes
+	Word Flip?	True
+	
+	Data:
+					[Footer starts at]
+		Offset		Ending		Image
+		0x3FF8		0x4D78		Peach's Castle
+		0x4DD8		0x5B58		Sector Z
+		0x5BB8		0x6938		Congo Jungle
+		0x6998		0x7718		Planet Zebes
+		0x7778		0x84F8		Hyrule Castle
+		0x8558		0x92D8		Yoshi's Island
+		0x9338		0xA0B8		Saffron City
+		0xA118		0xAE98		Mushroom Kingdom
+		0xAEF8		0xBC78		Dreamland
+		
+	
+	*************************************
+	3.03 X / Y Positions for Stage Names
+	*************************************
+	Location in RAM:	0x8014694
+	
+	These offsets are loaded in ram (routine at 0x801326DC), passed onto the stack, and	
+	then ignored for built in values of 0x43370000 (100.00 for x) and 0x43440000 (196.00 for y)
+	
+------------------------------------------------------------------------------------------	
+04 - Stage Logos (Series Logos, really)
+	These are the big, series images in the lower right hand corner
+	
+	******************************
+	4.01 - Logo Image Offset List
+	******************************
+	
+	Location in RAM:	0x80134834
+	
+	Location on ROM:	0x1503A4
+		File:
+		Offset:
+	
+	Type: Word (unit32 offset)
+	
+		Offset		ROM			Data		Image				Stage
+		80134834	1503A4		0x0618		Mario Series		Peach's Castle
+		80134838	1503A8		0x1938		Star Fox Series		Sector Z
+		8013483C	1503AC		0x0C78		DK Series			Congo Jungle
+		80134840	1503B0		0x12D8		Metroid Series		Planet Zebes
+		80134844	1503B4		0x25F8		Zelda Series		Hyrule Castle
+		80134848	1503B8		0x2C58		Yoshi Series		Yoshi's Island
+		8013484C	1503BC		0x1F98		Kirby Series		Dreamland
+		80134850	1503C0		0x3918		Pokemon Series		Saffron City
+		80134854	1503C4		0x0618		Mario Series		Mushroom Kingdom
+		
+	Note that "Random" is not included in this list. (Probably since the random question
+	mark is in resource-0030.bin, not resource-0020 like the other high res series icons)
+	
+	Random Logo:	Routine at 0x801328A8 "draws" the series logo when switching between 
+				stages. At 0x..28FC, there is a branch that checks for random (0xDE).
+				If 0xDE, load the RAM location of resource-0030.bin (third pointer),
+				add a constant 0x1DD8, and draw
+
+	****************
+	4.02 Logo X / Y
+	****************
+	
+	Location in RAM: 	0x801347E4
+	Location in ROM:
+		File:
+		Offset:
+	
+	Type: [Float x, Float y]
+	
+	Random Logo:	Branch at 0x80132844 (0xDE compare)
+				Manually load values, despite there being room in the table...? 
+					(the values don't finish loading...)
+				X: 0x435F0000	223.00
+				Y: 0x43100000	144.00
+	
+	*******************************
+	4.03 Logo Image Data [file 20]
+	*******************************
+	
+	
+	
+------------------------------------------------------------------------------------------
+05 - Stage Previews	
+
+
+
+
+	Misc Random Notes
+		Data duplicated to 0x80043C78
+			Same function that "draws" the images
+			that duplicated area is part of the stack
+			duplicated based on hard-code address for stage list (0x8013466C)
+		Then, 
+			8013264C	SLL		T3, V0, 0x2
+						ADDu	T4, S7, T3
+						LW		T5, 0x0000(T4)
+						LW		T0, 0x0008(S2)
+						OR		A0, S3, R0
+						JAL		0x800CCFDC
+						ADDu	A1, T5, T0
+						
+			S7 = 0x80043C78		(temp location of moved offsets)
+			T3 = 				(offset/loop offset)
+			T4 = S7 + offset	(pointer to texture offset of interest)
+			T5 = texture offset
+			S2 = 0x80134E10		(list of different texture pointers..?)
+			T0 = 0x8015B930		(icon texture base pointer)
+			S3 = 0x80201A18		(idk)
+			A0 = S3				(must be important as it's loaded as argument)
+			A1 = T5 + T0
+		
+		RA for where this occurs (i think)
+		0x8013442C
+		
+		This whole routine 0x80132528 is very important. Check more throughly
+			also sets position
+			might be able to just call this and have the stage icons redrawn...?
+		
+		Is 0x800CCFDC a routine to draw images?
+			A0 = pointer of some sort	(stored [0x0018(SP)]then overwritten with A1)
+			A1 = pointer to image data
+			A2			
+			
+		in 800CCFDC
+			CCFE8	LBU		T6, 0x0031(A1)
+					ADDiu	AT, R0, 0x0004
+					OR		A0, A1, R0
+					BNE		T6, AT, 0x800CD008	
+		
+		why does this check that byte against 0x04?	
+
+		8000CD08	JAL		0x80009614
+
+					LW		A0, 0x0018(SP)		//put a0 back

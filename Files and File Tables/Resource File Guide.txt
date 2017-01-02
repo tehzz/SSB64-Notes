@@ -1,0 +1,101 @@
+Resource File Guide
+------------------------------------------------------------
+
+resource-0000.bin	-	Unknown....Start Screen? [Need to implement proper image cutting]
+resource-0001.bin	-	Mode Select Main Screen (with Japanese)
+resource-0002.bin	-	1P Mode Menu Select Screen (with Japanese)
+resource-0003.bin	-	Screen Adjust Menu
+
+resource-0010.bin	-	Challenger Approaching Graphics [some non-word-swapped images]
+resource-0011.bin	-	1P Mode Stage Screen (Player VS LINK)	[Image 45 (0xc7f8 0xC8CC) is 8bit CI]
+resource-0012.bin	-	1P Mode Names (Mario...Ness Only)
+resource-0013.bin	-	Target and Race to the Finish Image (splash image 1P Mode, i think)
+resource-0014.bin	-	Board the Platforms Splash image
+resource-0015.bin	-	Overscan Correction Screen UI
+resource-0016.bin	-	Character History
+resource-0017.bin	-	VS Mode CSS text and UI
+resource-0018.bin	-	Free For All / Team Battle / Training Mode / BTT / BTP strings
+resource-0019.bin	-	CSS Character Portraits
+resource-0020.bin	-	Series Logos
+resource-0021.bin	-	Background Texture (rough black thing)
+resource-0022.bin	-	Not a typical image file... (looks like a circle... # of lives on 1P Mode screen?)NOPE
+resource-0023.bin	-	1P Mode CSS UI/text
+resource-0024.bin	-	Very Easy/Easy
+resource-0025.bin	-	Generic, green circle stock indicator
+resource-0026.bin	-	1 Image--Fancy Smash Logo on Black BG (training mode bg...?)
+resource-0027.bin	-	1 Image--Orange Training Mode bg
+resource-0028.bin	-	1 Image--Blue Training Mode
+resource-0029.bin	-	Training Mode Text and UI
+resource-0030.bin	-	Stage Select Screen Images
+resource-0031.bin	-	Data / Battle Stat Screen Images
+resource-0032.bin	-	"Data" + Left and Right Arrows
+resource-0033.bin	-	Data Mode eng character set
+resource-0034.bin	-	Results Screen UI + BG (incomplete...?)
+resource-0035.bin	-	F3dex2 Display Lists for Series Logos…
+resource-0036.bin	-	Results Screen Character Set (0-9; "x"; ":")
+resource-0037.bin	-	Blocky char set (A-Z, "!", ".")
+resource-0038.bin	-	"1P", etc. battle tags
+resource-0039.bin	-	NOT image file
+resource-0040.bin	-	NOT
+resource-0041.bin	-	NOT
+...
+resource-0053.bin	-	Intro Slash Graphics [Samus, Mario, Fox, Pika]
+resource-0054.bin	-	Intro Slash Graphics [Link, Kirby, DK, Yoshi]
+resource-0055.bin	-	Intro Colliding Background
+
+resource-0070.bin	-	Unused Blue Smokey Background...? (intro grass/dirt stage bg?)
+resource-0071.bin	-	Pikachu on Pokeball Bg
+
+resource-0073.bin	-	Intro Fox in Cockpit
+resource-0074.bin	-	Starfield BG?
+
+resource-0077.bin	-	Clear Data UI and Images
+resource-0078.bin	-	1 image: option header
+resource-0079.bin	-	1P Mode Continue Screen UI/Images
+resource-0080.bin	-	1P Mode Stage Clear UI/Images/Text
+resource-0081.bin	-	1 Image "SCORE:" bonus games clear?
+resource-0082.bin	-	Battle Start UI / TIME UP / GAME SET Characters
+
+resource-0087.bin	-	One very tiny image (downfacing triangle...)
+
+resource-0088.bin	-	Dreamland Background
+resource-0089.bin	-	Planet Zebes bg
+resource-0090.bin	-	Peach's Castle bg
+resource-0091.bin	-	Mushroom Kingdom bg
+resource-0092.bin	-	Congo Jungle bg
+resource-0093.bin	-	Yoshi's Island bg
+resource-0094.bin	-	Saffron City bg
+resource-0095.bin	-	Hyrule Castle bg
+resource-0096.bin	-	FD Background
+resource-0097.bin	-	Battlefield bg
+resource-0098.bin	-	Metal Cavern bg
+resource-0099.bin	-	Sector Z Background
+
+resource-0100.bin	-	Req'd file for Beta 1 (and maybe more?) F3Dex2 display lists
+
+resource-0116.bin	-	
+
+resource-0119.bin	-	BtT / BtP Background
+
+resource-0164.bin	-	Nice Numbers, %, "H.P" Master Hand?
+resource-0165.bin	-	Battle UI Numbers
+
+resource-0167.bin	-	Title Screen Images
+resource-0168.bin	-	Frames of fire burning animation
+resource-0169.bin	-	"NO CONTROLLER" image
+resource-0170.bin	-	Lower Half Kirby Congrats
+resource-0171.bin	-	Upper Half Kirby Congrats
+
+~0180 - 1P Mode "Congratulations" Images
+
+resource-0194.bin	-	N64 Logo
+resource-0195.bin	-	??? 0xB8 Credits stuff
+resource-0196.bin	-	Sound Test UI
+resource-0197.bin	-	Pause Screen UI?
+resource-0198.bin	-	How to Player Text
+
+resource-0256.bin	-	Kirby Beta 1 Stage main file (req to other files... 0x100 as called for preview on SSS)
+
+resource-0266.bin	-	FD main file
+
+resource-0345.bin	-	Master Hand Stock Image and Smash Logo

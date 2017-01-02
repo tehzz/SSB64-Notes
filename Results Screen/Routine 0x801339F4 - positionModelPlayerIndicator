@@ -1,0 +1,124 @@
+## Analysis of Routine `0x801339F4`
+### positionModelPlayerIndicator
+
+This routine sets the X and Y position of the passed Player Indicator image based on
+the passed player's place and character
+
+### Routine Inputs
+a0 : &to-draw-image linked list (?)
+a1 : u8 player index
+
+### Routine Outputs
+void
+
+### Stack Map
+Size: 0x218
+sp + 0x18  <- s0 (preserve)
+sp + 0x1C  <- s1 (preserve)
+sp + 0x20  <- s2 (preserve)
+sp + 0x24  <- ra
+
+sp + 0x30  <- charYOffsets struct [48 f32]   (RAM: 0x801392CC)
+sp + 0xF0  <- 4Player_XYPos struct [32 f32]  (RAM: 0x8013924C)
+sp + 0x170 <- 3Player_XYPos struct [24 f32]  (RAM: 0x801391EC)
+sp + 0x1D0 <- 2Player_XYPos struct [16 f32]  (RAM: 0x801391AC)
+
+sp + 0x214 <- tie-adjusted place; result of getModifiedPlayerPlace
+sp + 0x28  <- pointer to a Place Struct within an NPlayer_XYPos struct
+
+### Register Map
+s0 <- u8 "model position index"; return from modifiedCountActiveBefore
+s1 <- u8 player index (from a1)
+s2 <- &image-to-draw footer info?
+
+### "Used" Variables
+var adjPlace = sp + 0x214
+var modelPosSlot = s0
+
+### Code Overview
+* Load all four structures onto the stack
+* Call getModifiedPlayerPlace and modifiedCountActiveBefore, and store values (in sp+0x214, and s0)
+* Call getTotalNumberOfPlayers, and use that to branch into three branches:
+  * 2 Player Game
+  * 3 Player Game
+  * 4 Player Game
+* Each branch does roughly the same thing:
+  * Use the adjPlace and modelPosSlot values to load the X position float from
+  the proper structure. Save pointer at sp+0x0028.
+  * Then, call getCharFromPlayer, use the character index to load the Y Position offset,
+  and add that to the Y Position base return from the original structure
+  * 2P Game Struct Calcs:
+    * X, Y Base Position : modelPosSlot << 5 + adjPlace << 3
+    * Y Position Offset  : charIndex << 4 + modelPosSlot << 2
+  * 3P Game Struct Calcs:
+    * X, Y Base Position : modelPosSlot << 5 + adjPlace << 3
+    * Y Position Offset  : charIndex << 4 + modelPosSlot << 2
+  * 4P Game Struct Calcs:
+    * X, Y Base Position : modelPosSlot << 5 + adjPlace << 3 (???)
+    * Y Position Offset  : charIndex << 4 + modelPosSlot << 2
+
+
+
+### Structure Eludation
+The base structure seems to be a X,Y pair of float32 for a given place,
+and a place collection structure for each "model slot." A "model slot" is bascially
+a modified player before index:
+```
+struct Place {
+  f32 X
+  f32 Y
+}
+
+ModelSlot {
+  Place First
+  Place Second
+  Place Third
+  Place Fourth
+}
+
+```
+
+These basic structures are then used to construct 3 separate structures for 2, 3, or 4 player games:
+* 2 Player Game:
+```
+2Player_XYPos {
+  ModelSlot Slot1
+  ModelSlot Slot2
+}
+```
+
+* 3 Player Game:
+```
+3Player_XYPos {
+  ModelSlot Slot1
+  ModelSlot Slot2
+  ModelSlot Slot3
+}
+```
+
+* 4 Player Game:
+```
+4Player_XYPos {
+  ModelSlot Slot1
+  ModelSlot Slot2
+  ModelSlot Slot3
+  ModelSlot Slot4
+}
+```
+
+* Character Y Offsets Struct
+  * Note: These are all zero in the game...
+```
+struct YOffset {
+  f32 Position1Offset
+  f32 Position2Offset
+  f32 Position3Offset
+  f32 Position4Offset
+}
+
+struct charYOffset {
+  YOffset Mario
+  YOffset Fox
+  YOffset DK
+  ...
+}
