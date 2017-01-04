@@ -2,13 +2,24 @@
 * Base: 0x800A44E0
 * Size: 0x5C (92) bytes
 
-This holds the vs mode battle information for the Data -> VS Record screen.
-Persumably, there are 12 of these structures; one for each of the standard 12 characters.
+This structure holds the vs mode battle information for the Data -> VS Record screen.
+There are 12 of these structures in active RAM; one for each of the standard 12 characters. When/where is this structure stored from RAM to EPROM??
 
 ## Character Offsets
 | Character | Index | RAM Offset  |
 |-----------|-------|-------------|
 | Mario     | 0x0   | 800A44E0    |
+| Fox       | 0x1   | 800A453C    |
+| DK        | 0x2   | 800A4598    |
+| Samus     | 0x3   | 800A45F4    |
+| Luigi     | 0x4   | 800A4650    |
+| Link      | 0x5   | 800A46AC    |
+| Yoshi     | 0x6   | 800A4708    |
+| C.Falcon  | 0x7   | 800A4764    |
+| Kirby     | 0x8   | 800A47C0    |
+| Pikachu   | 0x9   | 800A481C    |
+| Jigglypuff| 0xA   | 800A4878    |
+| Ness      | 0xB   | 800A48D4    |
 
 ## Known Fields
 ### + 0x0 to 0x18 : KOs on Other Characters
