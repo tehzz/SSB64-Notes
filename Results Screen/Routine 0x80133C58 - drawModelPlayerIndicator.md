@@ -6,8 +6,8 @@ results screen.
 
 
 ### Routine Inputs
-a0 : u8 player index
-a1 : u8 MAN/CPU and Team Enum <1 : Man; 4 : CPU> || <1 : Red; 2: Blue; 3: Green; 4: CPU>
+* a0 : u8 player index
+* a1 : u8 MAN/CPU and Team Enum <1 : Man; 4 : CPU> || <1 : Red; 2: Blue; 3: Green; 4: CPU>
 
 ### Routine Outputs
 void
