@@ -13,23 +13,22 @@ void
 
 ### Stack Map
 size: 0x58 bytes
-sp + 0x3C  <- ra
-sp + [0x1C to 0x38] <- initial s0 through s8
-
-sp + 0x40 <- save pointer to current player struct from v0
+* sp + 0x3C  <- ra
+* sp + [0x1C to 0x38] <- initial s0 through s8
+* sp + 0x40 <- save pointer to current player struct from v0
 
 ### Saved Register Map
-s0 : pointer to character saved data struct (&saved-data -> {character})
-s1 : inner loop i / inner player index
-s2 : outer loop i / (outer) player index
-s3 : 800A4D08 -> stage struct/ player structs
-s4 : character index (variable based on loop number)
-s5 : 0x2  (Player Status enum; Not-In-Game)
-s6 : 0x270F (??)
-s7 : 0x4; i < 4
-s8 : player struct size (0x74)
+* s0 : pointer to character saved data struct (&saved-data -> {character})
+* s1 : inner loop i / inner player index
+* s2 : outer loop i / (outer) player index
+* s3 : 800A4D08 -> stage struct/ player structs
+* s4 : character index (variable based on loop number)
+* s5 : 0x2  (Player Status enum; Not-In-Game)
+* s6 : 0x270F (??)
+* s7 : 0x4; i < 4
+* s8 : player struct size (0x74)
 
-v0 : in loop, pointer to a given player struct (player[i])
+* v0 : in loop, pointer to a given player struct (player[i])
 ### Code Overview
 
 ### Code Flow
