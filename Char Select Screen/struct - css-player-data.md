@@ -28,7 +28,7 @@ An array of 4 structs at:
 | + 0x54      | u32   | Cursor State    |
 | + 0x58      | bool32| Character Selected? |
 | + 0x5C      | u32?  | Unknown, but read often |
-| + 0x60      | u32   | Select Frame + 0x1E |
+| + 0x60      | u32   | Selected Frame + 0x1E |
 | + 0x64      | f32   | ??? Token Pickup Movement |
 | + 0x68      | f32   | ??? Token Pickup Movement |
 | + 0x6C      | f32   | ??? Token Pickup Movement |
@@ -40,10 +40,10 @@ An array of 4 structs at:
 | + 0x88      | bool32| Character Selected II? |
 
 #### Field Explanation
-* Team: <0, 1, 2> <Red; Blue; Green>
+* Team: `enum { Red = 0, Blue = 1, Green = 2 };`
 * Character Index: This field holds the character index whenever a character is rendered in the player box at the bottom third of the screen. It makes no distinction between hovering over or selected.
-* Cursor State: <0, 1, 2> <Pointing; Holding Token; Open Hand>
+* Cursor State: `enum { Pointing = 0, Holding_Token = 1, Open_Hand = 2 }; `
 * Selected Frame: When a character is selected, the game loads the frame count on the CSS [`8013BDCC`] and adds 0x1E. Seems to prevent picking up token within 30 frames. Reads when picking up token, and if current frame < stored value, skip routine
 * Token Pickup Movement: These 5 float values seem to have something to do with the path the player token takes when it's "recalled"  by pressing 'B'.
 * Player Index of Held Token: Either the player index of currently held token, or `0xFFFFFFFF`.
-* Player Panel State: <0, 1, 2> = < MAN, CPU, Closed >
+* Player Panel State: `enum { MAN = 0, CPU = 1, Closed = 2 };`
