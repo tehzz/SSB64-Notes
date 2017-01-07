@@ -6,10 +6,18 @@ This routine will check if a player is able to select a character (token over a 
 * a0 : u32 playerPointer (? First Pointer from css-player-data struct)
 * a1 : u8  playerIndex
 * a2 : u8  heldToken
-* a3 : u8  charColor
+* a3 : u8  CButtonColor || 0x4 Default
 
 ### Output
 * v0 : bool characterSelectedByRoutine?
+
+### Notes:
+The C-Button Color refers to the index that is passed when selected with the C-Buttons (see `800EC0EC` colorLookUpFFA):
+* 0x0 : C-UP Color
+* 0x1 : C-RIGHT Color
+* 0x2 : C-DOWN Color
+* 0x3 : C-LEFT Color
+* 0x4 : Default, first-free color
 
 ## Code Flow
 * Generate pointer to `css-player-data` struct for player `a1`
