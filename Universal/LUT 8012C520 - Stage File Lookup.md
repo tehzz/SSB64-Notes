@@ -2,8 +2,8 @@
 * Total Size : 0x148 bytes
 * Entry Size : 0x8 bytes
 * Number of Entries : 0x29 (41)
-* RAM : `0x8012C520` (does this move? seems very high for a universally loaded thing...)
-* ROM : ??
+* RAM : `0x8012C520`
+* ROM : `0xA7D20`
 
 This is the table that converts from the stage index value to the actual stage file. Changing a file here can easily effect which stage is loaded. An entry is composed of two 32bit words. The first word is the stage "base file" from the file table. What does this second word mean again? 
 
