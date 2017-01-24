@@ -1,0 +1,52 @@
+80130D84 List of Player Pointers
+80267EF0 P1 Pointer
+80268A3C P1 Model Toggle
+
+Results
+80139C00 List of Player Pointers?
+8030C750 P1 Pointer
+
+
+HitBox Instruction
+800F2C04
+
+Battle Debug
+80130D84 pOINTER TO
+801EBA10 Base
++ 0xB4C = 801EC55C Model
+
+
++0X78 = 801EBA88 Position Pointer
+		8014C60C
+
+what is + 0x0a88??
+
+
+Seems to fix hitbox to model??
+0x3EA?
+
+Hard to find, set by the memory allocator routine
+--> it must have some meaning for display lists...? or just for SSB?
+80346C50
+the second call to 8000B93C when loading a screen seems to matter...
+I've seen 0x401 and 0x3EA
+
+*80046A58 -> *80248498
+Early 0x8004.. value is very temp
+**80131460 for constant pointer?
+
+active p1 check:80344B00
+
+Hitbox check
+800F2C04
+Hitbox color
+800F33BC
+
+IF = 0x0 goto 800F2C18
+ELSE IF != 0x0 goto 800F330C
+ELSE (so == 0x3) do  instructions between
+
+800F3304 is a branch to 800F3648 before
+
+Normal BNEL 800F364C
+Diff between 800F330C and 800F2FD4 is 338 >> 2 = 0xCE
