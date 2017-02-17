@@ -2,6 +2,8 @@
 80267EF0 P1 Pointer
 80268A3C P1 Model Toggle
 
+Size of Player Struct = 0xB50
+
 Results
 80139C00 List of Player Pointers?
 8030C750 P1 Pointer
