@@ -1,11 +1,12 @@
 ## Analysis of Routine `0x801321AC`
 name? modifiedCountActiveBefore ?
-Seems to work as a wrapper for countActivePlayersBefore, but checks for certain conditions
-List conditions?!!!
-3 Players Total, and routine called with middle player
-4 Players -??
 
-No Changes for two players
+This seems to work as a wrapper for countActivePlayersBefore, but checks for certain conditions
+
+What are those conditions? Make a list!?
+* 3 Players Total, and routine called with middle player
+* 4 Players -??
+* 2 Players = No Changes for two players
 
 This seems to be used for getting a "position index" for where character models should be
 placed left-to-right on the results screen
@@ -17,10 +18,10 @@ placed left-to-right on the results screen
 * v0 : u32 modified countActivePlayersBefore value
 
 ### Stack Map
-size: 0x20 bytes
-sp + 0x14 <- ra
-sp + 0x20 <- a0 [player index]
-sp + 0x1C <- count of active players before player index a0; return from countActivePlayersBefore
+* size: 0x20 bytes
+* sp + 0x14 <- ra
+* sp + 0x20 <- a0 [player index]
+* sp + 0x1C <- count of active players before player index a0; return from countActivePlayersBefore
 
 ### Code Flow
 * 801321BC
