@@ -5,13 +5,14 @@ Routine at 800E1260
 Pointer to some struct in a0
 +0x0
 
+*(a2+0x1BO)
 struct buttons {
-	u16 buttons_newPress
-	u16 ?? (stick new?)
-	u16 pad?
-	u16 button_held
-	u16 stick_held
-
+	u16 buttons_pressed
+	u16 button_new
+	u16 button_new
+	u16 button_released
+	u8	stick X
+	u8	stick Y
 }
 
 Some sort of pointer at a2 + 0x01BC
