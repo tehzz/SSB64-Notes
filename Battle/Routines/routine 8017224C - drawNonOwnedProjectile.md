@@ -1,5 +1,5 @@
 # 8017224C - drawNonOwnedProjectile
-* RAM Routine Location: `0x8017224C`
+##### RAM Routine Location: `0x8017224C`
 
 This renders the model / hitbox / collision hitbox for a "non-owned" projectile in a battle.
 I have no idea what the in-game difference is between "owned" (fireball, swinging sword)
