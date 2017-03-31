@@ -1,0 +1,12 @@
+PLayer Struct Vector Pointer
+80130D84
+P1 Battle (Hyrule)
+80262F10
++ 0xB4C (for regular hitbox address)
+80263A5C
+
+BP when ignoring other breaks (model, owned projectiles)
+80172D14  lw    t5, 0x0B4C(s2)
+  Routine seems to start at 0x80172CA4
+  puts hitbox word onto another stucture,
+  then struct's value is read and compared at 80172274? (full routine 0x8017224C)
