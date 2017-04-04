@@ -12,6 +12,11 @@ Results
 HitBox Instruction
 800F2C04
 
+Hurtbox/Hitbox/Collision in Magnifying Glass Instruction?
+800F29A0
+	-> Loads hitbox state, but doesn't seem to use it?
+	-> If != 0, seems to keep magnifying glass up after death..?
+
 Battle Debug
 80130D84 pOINTER TO
 801EBA10 Base

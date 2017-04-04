@@ -10,3 +10,10 @@ BP when ignoring other breaks (model, owned projectiles)
   Routine seems to start at 0x80172CA4
   puts hitbox word onto another stucture,
   then struct's value is read and compared at 80172274? (full routine 0x8017224C)
+
+Item Pick-up is different?
+Player hitbox state put into a same struct as prior
+
+Calls 80171C7C. Routine looks incredibly similar to 0x8017224C
+  Calls the same routines to draw (a) collision, (b) hurtbox/hitbox, and
+  (c) "check if need to draw", but the model drawing routine is different
