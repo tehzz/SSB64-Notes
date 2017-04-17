@@ -2,7 +2,7 @@
 ##### RAM Location: `0x80167520`
 ##### ROM Location: `0xE1F60`
 
-Draw the model for a character's projectile attacks (Mario Fireball, Link Boomerang, etc.) and projectiles from items (stars, pokemon projectiles, etc.).
+Draw the model for a character's projectile attacks (Mario Fireball, Link Boomerang, etc.) and projectiles from some items (stars, some pokemon projectiles, etc.).
 This might also draw things like homerun bat/star rod/sword swing.
 
 ## Parameters
