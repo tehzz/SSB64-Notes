@@ -4,6 +4,7 @@ Routine at 800E1260
 
 Pointer to some struct in a0
 +0x0
+a2 = *(a0+0x84)
 
 *(a2+0x1BO)
 struct buttons {
@@ -29,6 +30,8 @@ u8  X Stick
 u8  Y Stick
 
 Code Portions
+Beginning: Check for CPU controlled? Skip rest of routine if CPU?
+
 800E12EC: Check for 'R' (0x0010) and replace with Z & A (0xA000)
 800E1430: Limit Stick Values to 0x50 ?
 800E149C: Check stick against 0x14 (slti, bnezl; so when above 0x14)
