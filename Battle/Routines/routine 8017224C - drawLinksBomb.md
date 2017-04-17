@@ -1,23 +1,30 @@
-# 8017224C - drawNonOwnedProjectile
+# 8017224C - drawLinksBomb
 ##### RAM Location: `0x8017224C`
 ##### ROM Location: `0xECC8C`
 
-This renders the model / hitbox / collision hitbox for a "non-owned" projectile in a battle.
-I have no idea what the in-game difference is between "owned" (fireball, swinging sword)
-and "non-owned" (link's bomb, thrown item) projectiles.
+This renders the model / hitbox / collision hitbox for, seemingly, only Link's bomb.
+The routine is very similar to drawThrowingItem (`80171C7C`), but it calls different rendering sub-routines
 
 ## Parameters
 ### Inputs
 * a0 : pointer to some struct
 
 ### Outputs
-none
+* void
 
 ### Stack
 ```
+Size   ->  0x20
 + 0x14  <- ra
-+ 0x1C  <- a0
++ 0x1C  <- *(a0 + 0x84)
++ 0x20  <- a0
 ```
+
+### Called Sub-Routines
+* `0x80171C10` -> bool: checks for if a model needs to be rendered?
+* `0x80172008` -> void : drawBombNormalModel
+* `0x801719AC` -> void : drawCollisionOverBomb
+* `0x80171410` -> void : drawBombHitbox+Grabbox
 
 ## Analysis
 This routine seems to do more "work" than the semi-equivalent routine for owned projectiles (0x80167520)
