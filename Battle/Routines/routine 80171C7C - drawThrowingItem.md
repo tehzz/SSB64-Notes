@@ -76,7 +76,7 @@ collision_path (0x80171CDC):
         lw    ra, 0x0014(sp)
 
 orphaned_code? (0x80171CF8):
-        lw    t9, 0x0248(sp)
+        lw    t9, 0x0248(a0)
 
 hitbox_path (0x80171CFC):
         bnez  t9, draw_hitbox     ; is hitbox active?, draw only hitbox
