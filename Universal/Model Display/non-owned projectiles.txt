@@ -17,3 +17,19 @@ Player hitbox state put into a same struct as prior
 Calls 80171C7C. Routine looks incredibly similar to 0x8017224C
   Calls the same routines to draw (a) collision, (b) hurtbox/hitbox, and
   (c) "check if need to draw", but the model drawing routine is different
+
+Another routine at 0x80171D38 -> for thrown beam sword...
+
+Another routine at 0x80171F4C -> for bob-omb
+
+Just searching for "JAL 80171C10"
+
+80171C94 -> some thrown items
+80171D38 -> beam sword item
+80171F4C -> bob-omb
+8017224C -> link's bomb
+
+8017E100 -> ?
+8017E4A4 -> ?
+80183344 -> ?
+801834A0 -> ?
