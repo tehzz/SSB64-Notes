@@ -15,3 +15,33 @@ E466FFF0
 
 Unpaused: Camera 0x0 80244430	80046A64
 Paused:   Camera 0x1 80244318	80045232
+
+Camera Data Struct (f32)
+801314C0 - Zoom
+  Write to zoom at 8010C6AC (does this depend on active camera? yes?)
+
+BtT Cameras: (8012EBB4)
+8010C734  8010CAE0  8010CC74  8010CB48
+8010CCC0  8010CDAC  8010C8C4
+
+BtT Normal:
+8010CDAC
+
+data struct
+80131524
++  0 -> pointer
++  4    f32 y tilt (f32 radians)
++  8    f32 x tilt (f32 radians)
++  C    f32 zoom
++ 10    f32 char tracking multiplier
++ 14    f32 (value - 34.9998 (420BFFFC)) * (+10) + 34.99998
+
+BtT Pause Far Zoom BtT
+camera: 8010CCC0
+8013151C -> C3FA0000
+80131520 -> 466A6000 (zoom?)
+
+
+BtT Pause RenderCamera (*f 8010CECC) Inputs
+a0: 80242990
+a1: 80045232
