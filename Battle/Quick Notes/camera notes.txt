@@ -45,3 +45,22 @@ camera: 8010CCC0
 BtT Pause RenderCamera (*f 8010CECC) Inputs
 a0: 80242990
 a1: 80045232
+
+Player Camera Structs?
+*801314F4 =
+p1: 80314840
+p2: 80318F20
+
+values at 800A4D08 + 0x20 + 0x58
+
+deref'd at
+8010CAE4
+	load word at *addr + 0x74
+8010C968
+	load word at *addr + 0x74
+
+*(*801314F4 + 0x74) =
+p1:
+p2: 80318FA8
+
+this value is set by a0 for routine 0x8010CF44 (pause camera switch?)
