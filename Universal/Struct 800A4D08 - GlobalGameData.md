@@ -21,12 +21,12 @@ Due to this struct being compose of two structures (the game data and an array o
 
 | Base Offset | Type    | Field                   |
 |-------------|--------:|-------------------------|
-| + 0x0       |
+| + 0x0       | -----   | Hardcoded to `0x01` at `8018E1B0` for VS mode |
 | + 0x1       | u8      | Current Stage Index     |
 | + 0x2       | u8 bool | Team Mode               |
 | + 0x3       | u8      | Time / Stock BitFlag    |
-| + 0x4       |
-| + 0x5       |
+| + 0x4       | u8      | MAN Player Panels Open (CSS) |
+| + 0x5       | u8      | CPU Player Panels Open (CSS) |
 | + 0x6       | u8      | Starting Time           |
 | + 0x7       | u8      | Starting Stock - 1      |
 | + 0x8       | u8      | Handicap Mode Enum      |
@@ -35,10 +35,15 @@ Due to this struct being compose of two structures (the game data and an array o
 | + 0xB       | u8      | Damage %                |
 | + 0xC       | u32 flag| Item Flags              |
 | + 0x10      |
-| + 0x11      | u8 bool | Pause State?            |
+| + 0x11      | u8 flag | Pause State?            |
+| + 0x12      |
+| + 0x13      |
 | + 0x14      | u32     | Time Remaining (Frames) |
-| + 0x18      | u32     | Frame Counter?          |
+| + 0x18      | u32     | Frame Counter           |
 | + 0x1C      | u8      | Item Appearance % Enum  |
+| + 0x1D      | u8?     | Set to `0x80`??         |
+| + 0x1E      |
+| + 0x1F      |
 
 
 * Time / Stock BitFlag:
@@ -54,10 +59,13 @@ Due to this struct being compose of two structures (the game data and an array o
  ```
 * Item Flags:
 * Pause State: This seems to work in conjunction with the Item Appearance Enum (maybe training mode...?)
-  * 0 = No Items Spawn
-  * 1 = Items Spawn
+  * 0 = Unable to Pause
+  * 1 = Pausable; Game State Advances
   * 2 = Pause
   * 3 = Remove BG?
+  * 5 = Ending Battle
+  * 6 = Game Set Text Pause?
+  * 7 = Results Screen -> Go to ...?!
   * 8 = Inifinite Loop (recoverable, though)
 * Item Appearance % Enum:
 ```
