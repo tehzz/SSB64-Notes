@@ -8,7 +8,7 @@ This is just a quick list of what parameters I used to take images
 | BZ + X |
 | BZ - X |
 | BZ + Y |
-| BZ - Y | 
+| BZ - Y |
 ### Images
 #### Zoomed Out Image
 | | |
@@ -39,6 +39,6 @@ This is just a quick list of what parameters I used to take images
 | Top Plat Left  | -570, 1542 |
 | Top Plat Right | 570, 1542 |
 | Left plat Left  | -1841, 904 |
-| Left plat right | -951, 904  |
+| Left plat Right | -951, 904  |
 | Right plat Left  | 951, 907 |
-| Right plat right | 1892, 907 |
+| Right plat Right | 1892, 907 |
