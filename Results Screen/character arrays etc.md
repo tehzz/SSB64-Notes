@@ -54,7 +54,7 @@ The second array seems to be for "colorizing" the logo based on which player/
 team won.
 The third array is just the first array + 0x84... Used for "zooming" the logo?
 
-It seems that these are offsets within resource-0035.bin, which unfortunately,
+It seems that these are offsets within resource-0035.bin (normally at `0x80171F40`), which unfortunately,
 seems to be composed entirely of display list commands, and not bit-data images... :(
 
 | Index | Character | Char Logo Offset| 2nd Array | 3rd Array |
