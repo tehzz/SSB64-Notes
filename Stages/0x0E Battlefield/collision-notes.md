@@ -73,6 +73,34 @@ the collision no longer stops falling characters.
 | 22    | -623  | -607  | 0000 |    |
 | 23    | -1246 | -607  | 0000 |    |
 
+* Flags
+  * Upper Half is flag
+    * 0x80 - ledge is grab-able
+    * 0x40 - plane is drop-through-able
+  * Lower Half has two functions: as an index into a friction table and as a case
+  for a jump tbale
+  * `idx << 2 + 0x8012C4E0` for friction
+  * `idx - 7 && idx - 7 < 9` for jumptable
+    * 0x00 : Normal (?)
+    * 0x07 : Lava Sideways 1%
+    * 0x08 : Acid Up Large 10% (Planet Zebes)
+    * 0x09 : Lava Up Small 10% (DK / Mario BtP?)
+    * 0x0A : Spikes (?) Sideways 10%
+    * 0x0B : Lava Up Small 1%
+    * 0x0C : Nothing
+    * 0x0D : Nothing
+    * 0x0E : Nothing (BtP Platform?)
+    * 0x0F : Lava Up 1%
+  * Values >= 0x10 seem to be ice, but it looks like this index is just overflowing
+    * 0x10 : Ice (Super Slippery)
+    * 0x11 : Ice (Less Slippery)
+  * Lower half special effects determined at ~0x800E5C60
+    * jump table at 8012FE64
+
+| Index | Float |
+|-------|-------|
+
+
 ### Collision Connection List
 This is an "ordered" list of collision points (as u16 indices into the above array).
 Together with the next table, this defines a collision plane. Planes seem to be
@@ -96,7 +124,7 @@ connection list and a u16 length
 |-------|-------------|---------|---------------|-----------|-------|
 | 0     | + 0x00      | 0x4     | 8, 9, 10, 11  | Top Plat  | (-525, 1801), (525, 1801) |
 | 1     | + 0x08      | 0x4     | 0, 1, 2, 3    | Left Plat | (-645, 1021), (-1695, 1021) |
-| 2     | + 0x10      | 0x4     | 4, 5, 6, 7    | Right Plat| (1725, 1021), (675, 1021) |
+| 2     | + 0x10      | 0x4     | 4, 5, 6, 7    | Right Plat| (1725, 1020), (675, 1020) |
 | 3     | + 0x18      | 0x2     | 14, 15        | Main Plat | (-1950, 0), (1950, 0) |
 | 4     | + 0x1C      | 0x2     | 20, 21        | Lower Rect Bottom | (525, -1080), (-525, -1080) |
 | 5     | + 0x20      | 0x2     | 18, 19        | ? | (1246, -607), (623, -607) |
@@ -131,6 +159,9 @@ Raw:
 ```
 
 ### Unknown Array
+First half = unknown...
+then (u16 startIdx, u16 length) <- similar to melee
+top, bottom, right, left
 
 ```
 0001 0000  0004 0004
