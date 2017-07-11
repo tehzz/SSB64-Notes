@@ -5,7 +5,7 @@
 * RAM : `0x8012C520`
 * ROM : `0xA7D20`
 
-This is the table that converts from the stage index value to the actual stage file. Changing a file here can easily effect which stage is loaded. An entry is composed of two 32bit words. The first word is the stage "base file" from the file table. What does this second word mean again? 
+This is the table that converts from the stage index value to the actual stage file. Changing a file here can easily effect which stage is loaded. An entry is composed of two 32bit words. The first word is the stage "base file" from the file table. The second words is used to offset the loaded location of the file for the "stage base" pointer at `0x80131300`.
 
 | Stage Index | Stage File  | Second Word | Stage Name      |
 |-------------|-------------|-------------|-----------------|
