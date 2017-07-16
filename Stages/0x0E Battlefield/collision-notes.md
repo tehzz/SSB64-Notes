@@ -18,12 +18,12 @@ Resource File Offsets converted (`u32 & 0x000FFFF << 2`):
 
 | Offset  | Type  | Value     | Description |
 |---------|-------|-----------|-------------|
-| +0x00   | u16   | 0x0001    | Collision on/off? |
+| +0x00   | u16   | 0x0001    | Number of collision direction sets|
 | +0x02   | u16   | 0x0000    | pad? |
 | +0x04   | u32   | 000041F4  | Pointer to start of collision point array |
 | +0x08   | u32   | 00004284  | Pointer to collision connection list |
 | +0x0C   | u32   | 000042CC  | Pointer to collision connection info |
-| +0x10   | u32   | 00004308  | Pointer to unknown list... |
+| +0x10   | u32   | 00004308  | Pointer to collision direction array |
 | +0x14   | u16   | 0x0012    | Total number of spawn points |
 | +0x16   | u16   | ----      | pad |
 | +0x18   | u32   | 0000431C  | Pointer to spawn points array |
@@ -158,7 +158,25 @@ Raw:
 14: 0022 0002
 ```
 
-### Unknown Array
+### Collision Direction array
+This array of structures sets which direction a plane has collision for.
+#### Struct
+```C
+struct {
+  id:            u16,
+  top_start:     u16,
+  top_length:    u16,
+  bottom_start:  u16,
+  bottom_length: u16,
+  right_start:   u16,
+  right_length:  u16,
+  left_start:    u16,
+  left_length:   u16
+}
+```
+Each pair of `(start, length)` defines a range into the planes connection array.
+The `id` attribute is numbered starting from 1.
+
 First half = unknown...
 then (u16 startIdx, u16 length) <- similar to melee
 top, bottom, right, left
