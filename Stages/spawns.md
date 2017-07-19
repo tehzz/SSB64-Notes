@@ -6,7 +6,7 @@ pointer at (+0x40 / +0x54) in the main stage file.
 ## Structure
 ```
 typedef struct {
-  id: SpawnID,
+  id: u16 SpawnID,
   x : i16,
   y : i16
 } Spawn
