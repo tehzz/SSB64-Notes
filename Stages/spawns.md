@@ -1,6 +1,7 @@
 # Spawn Points Basic Info
 There is an array of spawns in the stage main info file. There are pointed to by the
-fifth and final pointer of from the pointer at (+0x40 / +0x54) in the main stage file.
+fifth and final pointer of the collision and spawn pointer set, which is pointed at by the 
+pointer at (+0x40 / +0x54) in the main stage file.
 
 ## Structure
 ```
