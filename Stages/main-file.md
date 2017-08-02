@@ -18,7 +18,15 @@ next "res_ptr", and the second value (lower half of the u32) is the offset in th
 | 0x00    | 0x14    | req_ptr | Point to main stage display list |
 | 0x40    | 0x54    | req_ptr | Point to stage collision and spawn structure |
 | 0x48    | 0x5C    | req_ptr | Pointer to ssb image footer for background image |
-| 0x6C    | 0x80    | i16     | +Y Camera Limit? |
+| 0x4C    | 0x60    |
+| 0x50    | 0x64    | rgba8888| P1 Logo Color....? (alpha doesn't matter)|
+| 0x54    | 0x68    | rgba8888| P2 Logo Color....? (alpha + blue doesn't matter)|
+| 0x58    | 0x6C    | rgba8888| P3 Logo Color....?|
+| 0x5C    | 0x70    | rgba8888| P3 Logo Color....?|
+| 0x60    | 0x74    | f32     | Lighting? X? |
+| 0x64    | 0x78    | f32     | Lighting? Y? |
+| 0x68    | 0x7C    | f32     | Camera X Rotation (around x axis) |
+| 0x6C    | 0x80    | i16     | +Y Camera Limit? (won't move frame past this y) |
 | 0x6E    | 0x82    | i16     | -Y Camera Limit? |
 | 0x70    | 0x84    | i16     | +X Camera Limit? |
 | 0x72    | 0x86    | i16     | -X Camera Limit? |
@@ -27,3 +35,7 @@ next "res_ptr", and the second value (lower half of the u32) is the offset in th
 | 0x78    | 0x8C    | i16     | +X Blastzone |
 | 0x7A    | 0x8E    | i16     | -X Blastzone |
 | 0x7C    | 0x90    | u32     | Stage Background Music Index |
+| 0x80    | 0x94    | u32     | 0x00 pad? |
+| 0x84    | 0x98    | res_ptr | Pointer to beginning of file? |
+| 0x88    | 0x9C    | i16     | Falling Whistle Y Limit? |
+| 0x8A    | 0x9E    | i16     | Falling Whistle Y Limit? |
