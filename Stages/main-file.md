@@ -57,6 +57,7 @@ next "res_ptr", and the second value (lower half of the u32) is the offset in th
 ### 0x04 Hyrule (file 265)
 Files can have information starting at 0xBC that seems to be stage specific. Hyrule
 has the tornado uses a set of 6 or 7 words after:
+
 | Offset from 0xBC | type | value |use |
 |------------------|------|-------|----|
 | + 0x0            | u32  |  0x02 |
