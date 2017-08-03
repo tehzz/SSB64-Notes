@@ -9,6 +9,22 @@ This is just a quick list of what parameters I used to take images
 | BZ - X |
 | BZ + Y |
 | BZ - Y |
+
+DL VS Mode / Human 1P Mode BZ
+206C F254 2328 DCD8
+
+| +Y    | -Y    | +X    | -X    |
+|-------|-------|-------|-------|
+| 8300  | -3500 | 9000  | -9000 |
+
+DL 1P Mode CPU BZ
+1B58 F254 1D4C E2B4
+
+| +Y    | -Y    | +X    | -X    |
+|-------|-------|-------|-------|
+| 7000  | -3500 | 7500  | -7500 |
+
+
 ### Images
 #### Zoomed Out Image
 | | |
