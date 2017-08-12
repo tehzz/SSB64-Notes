@@ -12,7 +12,8 @@ RAM location of the beginning of the file.
 
 The bytes seem to be involved in item generation? Map both what these bytes mean eventually.
 
-## Fields
+## "Base" Fields
+* Size is `0xA8` bytes
 * The "**res_ptr**" type is two u16 values. The first value (upper half of the u32) is the offset in words to the
 next "res_ptr", and the second value (lower half of the u32) is the offset in the words for the pointer
 * A "**req_ptr**" is the same as a `res_ptr`, but it points to a location in another file
@@ -54,6 +55,12 @@ next "res_ptr", and the second value (lower half of the u32) is the offset in th
 | 0x94    | 0xA8    | i16     | 1P CPU -Y Blastzone |
 | 0x96    | 0xAA    | i16     | 1P CPU +X Blastzone |
 | 0x98    | 0xAC    | i16     | 1P CPU -X Blastzone |
+| 0x9A    | 0xAE    | i16     | Bonus Stage Pause X Pan 1 |
+| 0x9C    | 0xB0    | i16     | Bonus Stage Pause Y Pan 1 |
+| 0x9E    | 0xB2    | i16     | Bonus Stage BG Zoom? |
+| 0xA0    | 0xB4    | i16     | Bonus Stage Pause X Pan 2 |
+| 0xA2    | 0xB6    | i16     | Bonus Stage Pause Y Pan 2 |
+| 0xA4    | 0xB8    | i16     | Bonus Stage Pause Zoom |
 
 * **Stage Geometry Structures**: There are four of the same structure. The game is inconsistent in how they are used.
 Sometimes, it is set-up like background geometry, main stage geometry, foreground geometry. Other times,
