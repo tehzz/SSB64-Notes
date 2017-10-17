@@ -3,10 +3,11 @@ There is a simple scripting language to move platforms, etc. in SSB64's stages
 
 ## Command Structure
 bitfield struct (u32, but important parts seem to be only in upper half...)
-* 31:25 (7 bits): Bank of object?
+* 31:25 (7 bits): Command
   * Checks for < 0x12
-  * Used as input to jump table at `0x8003DDEC`
-* 24:15 (10 bits)
+  * Used as input to jump table at `0x8003DDEC`, but the called function can also
+  use the command value to branch within itself
+* 24:15 (10 bits): Property to Modify
   * If equal to 0, break?
   * Otherwise, loop over each bit
     * find the first set bit
@@ -24,7 +25,6 @@ bitfield struct (u32, but important parts seem to be only in upper half...)
       * bit 7: X Scale
       * bit 8: Y Scale
       * bit 9: Z Scale
-
 * 15:0 (15 bits)
   * Custom value (I've only seen frame times here, if used)
   * if value < 0, add 4f800000f32 (4.29497e+09)
