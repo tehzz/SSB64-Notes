@@ -79,7 +79,7 @@ Size: `0x10` (16) bytes
 | 0x0     | req_ptr | Pointer to a F3DEX2 footer |
 | 0x4     | req_ptr | Pointer to geometry movement scripts |
 | 0x8     | req_ptr | Pointer to color information/ color changing objects??? |
-| 0xC     | req_ptr | Pointer to color chaing scripts |
+| 0xC     | req_ptr | Pointer to color changing scripts |
 
 Write in-depth information in other files
 
