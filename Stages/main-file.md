@@ -71,6 +71,32 @@ specific routines??)
 a `res_ptr` to the start of the file (aka where the item data is). Other file types have a null (0u32) value.  
 * **0x88: Falling Whistle Y Threshold**: When a character's previous frame height > val > current height?
 
+### Item Spawn Information?
+The `0x14` bytes at the start of some stage files seem to determine an item's spawn chance? The game code will sum each of the bytes, and move the values somewhere. The byte's value seems to be the chance (out of the summ of all 20 bytes) that the item will spawn 
+
+| Offset | Item       |
+|--------|------------|
+| 0x00   | Item Crate |
+| 0x01   | Item Barrel |
+| 0x02   | Item Capsule |
+| 0x03   | Item Egg |
+| 0x04   | Maxim Tomato |
+| 0x05   | Heart Container |
+| 0x06   | Star |
+| 0x07   | Beam Sword |
+| 0x08   | Home Run Bat |
+| 0x09   | Fan |
+| 0x0A   | Star Rod |
+| 0x0B   | Ray Gun |
+| 0x0C   | Fire Flower |
+| 0x0D   | Hammer |
+| 0x0E   | Motion Sensor Bomb |
+| 0x0F   | Bom-omb |
+| 0x10   | Bumper |
+| 0x11   | Green Shell |
+| 0x12   | Red Shell |
+| 0x13   | Pokeball |
+
 ### "StageGeo": Geometry and Scripting Structure
 Size: `0x10` (16) bytes
 
